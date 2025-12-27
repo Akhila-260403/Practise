@@ -1,0 +1,46 @@
+<!-- BUY FORM -->
+<div *ngIf="!purchaseSuccess && plan">
+
+  <p><strong>Plan:</strong> {{ plan.name }}</p>
+  <p><strong>Price:</strong> INR {{ plan.price }}</p>
+
+  <label>Payment Mode:</label>
+  <select [(ngModel)]="paymentMode">
+    <option value="">Select</option>
+    <option>Debit Card</option>
+    <option>Credit Card</option>
+    <option>UPI</option>
+  </select>
+
+  <br /><br />
+
+  <label>Payment Frequency:</label>
+  <select [(ngModel)]="frequency">
+    <option value="">Select</option>
+    <option>Monthly</option>
+    <option>Half Yearly</option>
+    <option>Yearly</option>
+  </select>
+
+  <br /><br />
+
+  <!-- THIS IS CRITICAL -->
+  <button
+    type="button"
+    (click)="confirmPurchase()"
+  >
+    Confirm Purchase
+  </button>
+
+</div>
+
+<!-- CONFIRMATION -->
+<div *ngIf="purchaseSuccess" style="background:#e8f5e9; padding:20px; margin-top:20px;">
+  <h2>Purchase Successful!</h2>
+
+  <p><strong>Policy:</strong> {{ plan.name }}</p>
+  <p><strong>Premium:</strong> INR {{ plan.price }}</p>
+  <p><strong>Payment Mode:</strong> {{ paymentMode }}</p>
+  <p><strong>Frequency:</strong> {{ frequency }}</p>
+  <p><strong>Start Date:</strong> {{ today | date }}</p>
+</div>
